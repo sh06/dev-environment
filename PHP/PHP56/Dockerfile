@@ -1,0 +1,16 @@
+FROM php:5.6.40-fpm-alpine
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
+&& apk update \
+&& apk add \
+        libmcrypt-dev \
+        freetype-dev \
+        libpng-dev \
+        libjpeg-turbo-dev \
+&& docker-php-ext-configure gd \
+    --with-freetype-dir=/usr/include/ \
+    --with-jpeg-dir=/usr/include/ \
+    --with-png-dir=/usr/include/ \
+&& docker-php-ext-install -j$(nproc) gd \
+&& docker-php-ext-install pdo_mysql sockets mysql mysqli mcrypt opcache zip
+EXPOSE 9000
+CMD ["php-fpm"]

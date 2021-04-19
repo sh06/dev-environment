@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  mysql:
+    restart: always
+    image: mysql:5.7.33
+    container_name: mysql57
+    volumes:
+      - ./data:/data
+      - ./datadir:/var/lib/mysql
+      - ./conf/my.cnf:/etc/mysql/my.cnf
+      - ./data/log:/var/log/mysql/
+    environment:
+      - "MYSQL_ROOT_PASSWORD=123456"
+      - "TZ=Asia/Shanghai"
+    ports:
+      - 3307:3306
+    networks:
+      develop:
+        ipv4_address: 10.0.1.1
+networks:
+  develop:
+    external: true
