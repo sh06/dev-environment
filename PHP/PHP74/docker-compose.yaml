@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  php56:
+  php74:
     restart: always
     image: php74
     build:

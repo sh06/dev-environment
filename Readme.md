@@ -27,7 +27,7 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 - MySQL - 10.0.1.0
   - 5.7 - 10.0.1.1
 - Nginx - 10.0.2.0
-  - Nginx-PHP - 10.0.2.1
+  - Nginx - 10.0.2.1
 - PHP - 10.0.3.0
   - 5.6 - 10.0.3.56
   - 7.2 - 10.0.3.72
