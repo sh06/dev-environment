@@ -38,6 +38,10 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
   - 8.0 - 10.0.3.80
 - Golang - 10.0.4.0
   - 1.16 - 10.0.4.1
+- Redis - 10.0.5.0
+  - 5 - 10.0.5.1
+- Node.js - 10.0.6.0
+  - 14.16 - 10.0.6.1
 
 ## 注意
 
@@ -55,3 +59,45 @@ location ~ \.php$ {
     include        fastcgi_params;
 }
 ```
+
+### Node.js
+
+Node.js 只配置了国内源和 npm 的更新。
+
+使用了 Web 文件夹，在这个文件夹执行一些包的安装，比如 vue-cli，这样目录结构变成了：
+
+```
+.
+├── node_modules
+├── package-lock.json
+└── package.json
+```
+
+然后在执行一些其他操作，比如使用 vue-cli 创建一个 app 项目，目录就变成了：
+
+```
+.
+├── node_modules
+├── app
+│   ├── node_modules
+│   ├── public
+│   ├── src
+│   ├── README.md
+│   ├── package-lock.json
+│   └── package.json
+├── package-lock.json
+└── package.json
+```
+
+#### Vue
+
+在本机访问容器的 vue 的 ui 和 serve 服务需要执行：
+
+```
+npx vue ui -H 0.0.0.0
+或
+npx vue ui -H 10.0.6.1
+
+npx vue-cli-service serve --host=10.0.6.1
+```
+

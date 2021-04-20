@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  node14.16:
+    restart: always
+    image: node14.16
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node14.16
+    tty: true
+    volumes: 
+      - ./../../../Web:/data
+    ports:
+      - 8000:8000
+      - 8080:8080
+    networks:
+      develop:
+        ipv4_address: 10.0.6.1
+networks:
+  develop:
+    external: true
