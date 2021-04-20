@@ -18,6 +18,9 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 ```
 .
 ├── dev-environment
+├── Go
+│   ├── GOPATH
+│   └── Project
 └── PHP
 ```
 
@@ -33,6 +36,8 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
   - 7.2 - 10.0.3.72
   - 7.3 - 10.0.3.73
   - 8.0 - 10.0.3.80
+- Golang - 10.0.4.0
+  - 1.16 - 10.0.4.1
 
 ## 注意
 

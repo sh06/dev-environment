@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  go1.16:
+    restart: always
+    image: go1.16
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: go1.16
+    tty: true
+    volumes: 
+      - ./../../../Go/GOPATH:/go
+      # 自己映射自己的源代码目录
+      - ./../../../Go/Project:/goproject
+    ports:
+      # 自己映射需要用到的端口
+      - 8080:8080
+    networks:
+      develop:
+        ipv4_address: 10.0.4.1
+networks:
+  develop:
+    external: true
