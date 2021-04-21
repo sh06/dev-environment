@@ -52,6 +52,20 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 
 这样可以切换多个 SDK，便于开发。
 
+### PHP
+
+关于 composer 可以创建一个脚本，创建容器的时候运行获取最新的版本：
+
+```bash
+#!/bin/sh
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+```
+
 ### Nginx
 
 想要用不同的 PHP 版本打开项目的时候，修改 ``fastcgi_pass`` 对应的 IP 就可以。
@@ -62,7 +76,7 @@ location ~ \.php$ {
     root           html;
     fastcgi_pass   10.0.3.80:9000;
     fastcgi_index  index.php;
-    fastcgi_param  SCRIPT_FILENAME  /var/www$fastcgi_script_name;
+    fastcgi_param  SCRIPT_FILENAME  /data/php$fastcgi_script_name;
     include        fastcgi_params;
 }
 ```
