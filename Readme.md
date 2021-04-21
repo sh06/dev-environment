@@ -21,6 +21,7 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 ├── Web
 ├── Go
 │   ├── GOPATH
+│   ├── GOROOT
 │   └── Project
 └── PHP
 ```
@@ -45,6 +46,11 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
   - 14.16 - 10.0.6.1
 
 ## 注意
+
+### Go
+在本地修改代码的时候，比如使用 GoLand 提示没有设置 GOROOT 很多代码标红，这时候可以用 GoLand 下载 SDK 保存到 GOROOT 目录中。
+
+这样可以切换多个 SDK，便于开发。
 
 ### Nginx
 
