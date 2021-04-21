@@ -1,6 +1,7 @@
 FROM golang:1.16.3-alpine3.13
 ENV GOPROXY=https://goproxy.cn \
-    GO111MODULE=on
+    GO111MODULE=on \
+    PS1="\w "
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
     && apk update \
     && apk upgrade \

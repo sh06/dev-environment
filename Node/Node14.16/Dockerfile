@@ -1,4 +1,5 @@
 FROM node:14.16.1-alpine3.12
+ENV PS1="\w "
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
     && apk update \
     && apk upgrade \

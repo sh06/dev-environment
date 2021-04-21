@@ -1,3 +1,5 @@
 .DS_Store
 *.log
 MySQL/MySQL5.7/datadir
+Nginx/Nginx/conf/*
+Redis/Redis5/data/*

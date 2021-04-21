@@ -18,6 +18,7 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 ```
 .
 ├── dev-environment
+├── Web
 ├── Go
 │   ├── GOPATH
 │   └── Project
@@ -64,30 +65,7 @@ location ~ \.php$ {
 
 Node.js 只配置了国内源和 npm 的更新。
 
-使用了 Web 文件夹，在这个文件夹执行一些包的安装，比如 vue-cli，这样目录结构变成了：
-
-```
-.
-├── node_modules
-├── package-lock.json
-└── package.json
-```
-
-然后在执行一些其他操作，比如使用 vue-cli 创建一个 app 项目，目录就变成了：
-
-```
-.
-├── node_modules
-├── app
-│   ├── node_modules
-│   ├── public
-│   ├── src
-│   ├── README.md
-│   ├── package-lock.json
-│   └── package.json
-├── package-lock.json
-└── package.json
-```
+npm 安装在 /usr/local/lib/node_modules 中，比如 vue-cli 的全局安装也会在这个目录中。
 
 #### Vue
 
