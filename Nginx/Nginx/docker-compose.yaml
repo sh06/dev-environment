@@ -17,6 +17,7 @@ services:
       - "TZ=Asia/Shanghai"
     ports:
       - 80:80
+      - 81:81
       - 443:443
     networks:
       develop:
