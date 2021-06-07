@@ -47,6 +47,30 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 
 ## 注意
 
+### MySQL
+
+#### 启动失败
+
+**需要修复表**
+
+MySQL 遇到启动失败，查看 error.logs，发现有 ``[ERROR] mysqld: Table 'db' is marked as crashed and should be repaired`` 是这个表坏了需要修复。
+
+这时候使用修复命令：
+
+```
+$ myisamchk --recover --quick /path/to/tblName
+$ myisamchk --recover /path/to/tblName
+$ myisamchk --safe-recover /path/to/tblName
+```
+
+所以在 docker-compose.yaml 添加一个 command 指令来替代启动执行的命令：
+
+```yml
+command: myisamchk --recover --quick /var/lib/mysql/mysql/db
+```
+
+这样启动的时候就是执行这个命令来修复表，修复成功后在 docker compose down/up 来重启启动服务。
+
 ### Go
 在本地修改代码的时候，比如使用 GoLand 提示没有设置 GOROOT 很多代码标红，这时候可以用 GoLand 下载 SDK 保存到 GOROOT 目录中。
 
