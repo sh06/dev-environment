@@ -9,7 +9,7 @@ services:
     container_name: node14.16
     tty: true
     volumes: 
-      - ./../../../Web:/data
+      - ./../../../Web:/data/web
     ports:
       - 8000:8000
       - 8080:8080

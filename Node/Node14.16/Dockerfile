@@ -13,7 +13,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && echo "Asia/Shanghai" > /etc/timezone \
     && npm config set registry https://registry.npm.taobao.org \
     && npm install -g npm \
-    && mkdir /data
+    && mkdir -p /data/web
 WORKDIR /data
 EXPOSE 8000 8080
-CMD ["/bin/bash"]
