@@ -13,7 +13,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         tzdata \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
-    && mkdir /goproject
-WORKDIR /goproject
-EXPOSE 1-65535
+    && mkdir -p /data/cloud \
+    && mkdir -p /data/go
+WORKDIR /data
+EXPOSE 10000-10100
 CMD ["/bin/bash"]

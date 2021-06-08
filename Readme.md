@@ -30,20 +30,20 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 ## 网段划分
 
 - MySQL - 10.0.1.0
-  - 5.7 - 10.0.1.1
+  - 5.7 - 10.0.1.1 - 3306
 - Nginx - 10.0.2.0
-  - Nginx - 10.0.2.1
+  - Nginx - 10.0.2.1 - 80、81、443
 - PHP - 10.0.3.0
-  - 5.6 - 10.0.3.56
-  - 7.2 - 10.0.3.72
-  - 7.3 - 10.0.3.73
-  - 8.0 - 10.0.3.80
+  - 5.6 - 10.0.3.56 - 9056
+  - 7.2 - 10.0.3.72 - 9072
+  - 7.3 - 10.0.3.73 - 9073
+  - 8.0 - 10.0.3.80 - 9080
 - Golang - 10.0.4.0
-  - 1.16 - 10.0.4.1
+  - 1.16 - 10.0.4.1 - 10000-10100
 - Redis - 10.0.5.0
-  - 5 - 10.0.5.1
+  - 5 - 10.0.5.1 - 6379
 - Node.js - 10.0.6.0
-  - 14.16 - 10.0.6.1
+  - 14.16 - 10.0.6.1 - 8000、8080
 
 ## 注意
 
@@ -63,13 +63,13 @@ $ myisamchk --recover /path/to/tblName
 $ myisamchk --safe-recover /path/to/tblName
 ```
 
-所以在 docker-compose.yaml 添加一个 command 指令来替代启动执行的命令：
+所以在 run.sh 创建容器的时候增加一个命令：
 
 ```yml
-command: myisamchk --recover --quick /var/lib/mysql/mysql/db
+/bin/sh -c "myisamchk --recover --quick /var/lib/mysql/mysql/db"
 ```
 
-这样启动的时候就是执行这个命令来修复表，修复成功后在 docker compose down/up 来重启启动服务。
+这样启动的时候就是执行这个命令来修复表。
 
 ### Go
 在本地修改代码的时候，比如使用 GoLand 提示没有设置 GOROOT 很多代码标红，这时候可以用 GoLand 下载 SDK 保存到 GOROOT 目录中。
