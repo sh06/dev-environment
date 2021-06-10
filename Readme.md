@@ -111,6 +111,23 @@ Node.js 只配置了国内源和 npm 的更新。
 
 npm 安装在 /usr/local/lib/node_modules 中，比如 vue-cli 的全局安装也会在这个目录中。
 
+#### 遇到的问题
+
+```
+npm ERR! cb() never called!
+
+npm ERR! This is an error with npm itself. Please report this error at:
+npm ERR!     <https://github.com/npm/cli/issues>
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2021-06-10T01_44_45_368Z-debug.log
+```
+
+解决方法：清除 npm 缓存 ``npm cache clean -f``
+
+
+
+
 #### Vue
 
 在本机访问容器的 vue 的 ui 和 serve 服务需要执行：
