@@ -9,5 +9,5 @@ docker run -dit \
     -v $path//../../../Go/GOPATH_DOCKER:/go \
     -v $path/../../../Go/Project:/data/go \
     --network=develop \
-    --ip=10.10.4.1 \
+    --ip=10.0.4.1 \
     go1.16

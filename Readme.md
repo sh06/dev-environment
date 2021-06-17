@@ -29,8 +29,8 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 
 ## 网段划分
 
-- MySQL - 10.0.1.0
-  - 5.7 - 10.0.1.1 - 3306
+- 数据库 - 10.0.1.0
+  - MySQL5.7 - 10.0.1.1 - 3306
 - Nginx - 10.0.2.0
   - Nginx - 10.0.2.1 - 80、81、443
 - PHP - 10.0.3.0
@@ -44,6 +44,9 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
   - 5 - 10.0.5.1 - 6379
 - Node.js - 10.0.6.0
   - 14.16 - 10.0.6.1 - 8000、8080
+- ELK - 10.0.7.0
+  - Elasticsearch - 10.0.7.1 - 9200、9300
+  
 
 ## 注意
 
