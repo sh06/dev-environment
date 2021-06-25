@@ -2,9 +2,10 @@
 path=`pwd`
 
 docker run -itd \
-    --name es7.8 \
+    --name es7_signle \
     -e TZ=Asia/Shanghai \
     -e "discovery.type=single-node" \
+    -v $path/es_signle/data:/usr/share/elasticsearch/data \
     -p 9200:9200 \
     -p 9300:9300 \
     --network=develop \

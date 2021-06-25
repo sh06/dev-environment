@@ -45,7 +45,13 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 - Node.js - 10.0.6.0
   - 14.16 - 10.0.6.1 - 8000、8080
 - ELK - 10.0.7.0
-  - Elasticsearch - 10.0.7.1 - 9200、9300
+  -  7.x
+     - es7_signle - 10.0.7.1 - 9200、9300
+     - es7-01 - 10.0.7.1 - 9200
+     - es7-02 - 10.0.7.2
+     - es7-03 - 10.0.7.3
+     - kibnan - 10.0.7.5 - 5601
+  
   
 
 ## 注意
@@ -143,3 +149,28 @@ npx vue ui -H 10.0.6.1
 npx vue-cli-service serve --host=10.0.6.1
 ```
 
+### ELK
+
+#### Kibana7
+
+如果一只报错，提示 ``Unable to connect to Elasticsearch.`` 有可能是内存不够，开启单节点 ``Elasticsearch`` 试试。
+
+如果看日志报错：
+
+```
+TOO_MANY_REQUESTS/12/index read-only / allow delete (api)
+```
+
+往 Elasticsearch 发送：
+
+```
+PUT
+http://127.0.0.1:9200/_settings
+{
+    "index":{
+        "blocks":{
+            "read_only_allow_delete":"false"
+        }
+    }
+}
+```

@@ -1,0 +1,15 @@
+cluster.name: elasticsearch
+node.name: es02
+network.host: 0.0.0.0
+http.port: 9200
+transport.tcp.port: 9300
+bootstrap.memory_lock: true
+discovery.seed_hosts:
+  - 10.0.7.1
+  - 10.0.7.3
+cluster.initial_master_nodes: 
+  - 10.0.7.1
+  - 10.0.7.2
+  - 10.0.7.3
+discovery.zen.minimum_master_nodes: 1
+gateway.recover_after_nodes: 1
