@@ -38,8 +38,8 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
 
 ## 网段划分
 
-- MySQL - 10.0.1.0
-  - 5.7 - 10.0.1.1 - 3306
+- 数据库 - 10.0.1.0
+  - MySQL5.7 - 10.0.1.1 - 3306
 - Nginx - 10.0.2.0
   - Nginx - 10.0.2.1 - 80、81、443
 - PHP - 10.0.3.0
@@ -53,6 +53,15 @@ docker network create --driver=bridge --subnet=10.0.0.0/8 develop
   - 5 - 10.0.5.1 - 6379
 - Node.js - 10.0.6.0
   - 14.16 - 10.0.6.1 - 8000、8080
+- ELK - 10.0.7.0
+  -  7.x
+     - es7_signle - 10.0.7.1 - 9200、9300
+     - es7-01 - 10.0.7.1 - 9200
+     - es7-02 - 10.0.7.2
+     - es7-03 - 10.0.7.3
+     - kibnan - 10.0.7.5 - 5601
+  
+  
 
 ## 注意
 
@@ -120,6 +129,23 @@ Node.js 只配置了国内源和 npm 的更新。
 
 npm 安装在 /usr/local/lib/node_modules 中，比如 vue-cli 的全局安装也会在这个目录中。
 
+#### 遇到的问题
+
+```
+npm ERR! cb() never called!
+
+npm ERR! This is an error with npm itself. Please report this error at:
+npm ERR!     <https://github.com/npm/cli/issues>
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2021-06-10T01_44_45_368Z-debug.log
+```
+
+解决方法：清除 npm 缓存 ``npm cache clean -f``
+
+
+
+
 #### Vue
 
 安装 vue/cli 报错找不到 Python
@@ -134,3 +160,28 @@ npx vue ui -H 10.0.6.1
 npx vue-cli-service serve --host=10.0.6.1
 ```
 
+### ELK
+
+#### Kibana7
+
+如果一只报错，提示 ``Unable to connect to Elasticsearch.`` 有可能是内存不够，开启单节点 ``Elasticsearch`` 试试。
+
+如果看日志报错：
+
+```
+TOO_MANY_REQUESTS/12/index read-only / allow delete (api)
+```
+
+往 Elasticsearch 发送：
+
+```
+PUT
+http://127.0.0.1:9200/_settings
+{
+    "index":{
+        "blocks":{
+            "read_only_allow_delete":"false"
+        }
+    }
+}
+```
