@@ -2,6 +2,15 @@
 
 [toc]
 
+## 使用
+使用以下命令来生成镜像，根据 ``run.sh`` 种使用的名称来创建：
+
+```bash
+docker build -t 镜像名称 .
+```
+
+然后在目录种运行 ``run.sh`` 来生成容器。
+
 ## 网络
 
 使用如下网络：
@@ -112,6 +121,8 @@ Node.js 只配置了国内源和 npm 的更新。
 npm 安装在 /usr/local/lib/node_modules 中，比如 vue-cli 的全局安装也会在这个目录中。
 
 #### Vue
+
+安装 vue/cli 报错找不到 Python
 
 在本机访问容器的 vue 的 ui 和 serve 服务需要执行：
 
