@@ -2,6 +2,15 @@
 
 [toc]
 
+## 使用
+使用以下命令来生成镜像，根据 ``run.sh`` 种使用的名称来创建：
+
+```bash
+docker build -t 镜像名称 .
+```
+
+然后在目录种运行 ``run.sh`` 来生成容器。
+
 ## 网络
 
 使用如下网络：
@@ -138,6 +147,8 @@ npm ERR!     /root/.npm/_logs/2021-06-10T01_44_45_368Z-debug.log
 
 
 #### Vue
+
+安装 vue/cli 报错找不到 Python
 
 在本机访问容器的 vue 的 ui 和 serve 服务需要执行：
 

@@ -31,5 +31,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
     && echo "Asia/Shanghai" > /etc/timezone \
     && mkdir -p /data/php \
     && mkdir -p /data/cloud
+WORKDIR /data
 EXPOSE 9000
 CMD ["php-fpm"]
