@@ -10,5 +10,5 @@ docker run -d \
     -v $path/conf:/etc/mysql \
     -v $path/data/log:/var/log/mysql \
     --network=develop \
-    --ip=10.10.1.1 \
+    --ip=10.0.1.1 \
     mysql:5.7.33
