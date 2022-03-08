@@ -3,6 +3,7 @@
 MySQL/MySQL5.7/datadir
 Nginx/Nginx/conf/*
 Redis/Redis5/data/*
+Redis/Redis6/data/*
 ELK/7.x/es01/data/*
 ELK/7.x/es02/data/*
 ELK/7.x/es03/data/*

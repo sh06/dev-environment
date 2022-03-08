@@ -1,11 +1,14 @@
 #!/bin/bash
+# docker build -t php56 .
+
+source ../../base.sh
 path=`pwd`
 
 docker run -itd \
     --name php56 \
     -e TZ=Asia/Shanghai \
     -p 9056:9000 \
-    -v /Users/sh06/NutstoreFiles/我的坚果云/Development/project:/data/cloud \
+    -v $cloud/project:/data/cloud \
     -v $path/../../../PHP:/data/php \
     -v $path/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf \
     --network=develop \

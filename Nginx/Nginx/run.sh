@@ -1,4 +1,7 @@
 #!/bin/bash
+# docker build -t nginx1.19 .
+
+source ../../base.sh
 path=`pwd`
 
 docker run -itd \
@@ -7,7 +10,7 @@ docker run -itd \
     -p 80:80 \
     -p 81:81 \
     -p 443:443 \
-    -v /Users/sh06/NutstoreFiles/我的坚果云/Development/project:/data/cloud \
+    -v $cloud/project:/data/cloud \
     -v $path/../../../PHP:/data/php \
     -v $path/../../../Web:/data/web \
     -v $path/logs:/var/log/nginx \
