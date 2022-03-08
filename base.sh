@@ -1,2 +1,3 @@
 #!/bin/bash
-cloud='/Volumes/Data/NutstoreFiles/我的坚果云/Development'
+# 存放代码的目录
+cloud=''
