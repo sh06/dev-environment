@@ -1,6 +1,6 @@
 .DS_Store
 *.log
-./base.sh
+base.sh
 MySQL/MySQL5.7/datadir
 Nginx/Nginx/conf/*
 Redis/Redis5/data/*
