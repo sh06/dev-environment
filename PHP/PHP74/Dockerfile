@@ -14,6 +14,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         g++ \
         make \
         tzdata \
+        imagemagick-dev \
+        libxml2-dev \
     && docker-php-ext-configure gd \
         --with-webp=/usr/include/webp \
         --with-jpeg=/usr/include \
@@ -25,8 +27,13 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         mysqli \
         opcache \
         zip \
+        bcmath \
+        pcntl \
+        soap \
     && pecl install redis \
     && docker-php-ext-enable redis \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && mkdir -p /data/php \
