@@ -24,6 +24,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
         mysqli \
         opcache \
         zip \
+        bcmath \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
